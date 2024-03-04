@@ -28,8 +28,11 @@ let getComputerChoice = () => {
 getComputerChoice();
 
 // Getting user input
-var input = prompt("What is your choice? Rock, Paper, or Scissors?");
+var playerSelection = prompt("What is your choice? Rock, Paper, or Scissors?");
 
-let playGame = (playerSelection, computerSelection) => {};
+let playGame = (playerSelection, computerSelection) => {
+  playerSelection = playerSelection.toLowerCase();
+  console.log(playerSelection);
+};
 
-//playGame(,getComputerChoice());
+playGame(playerSelection, getComputerChoice());
