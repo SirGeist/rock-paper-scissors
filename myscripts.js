@@ -82,23 +82,30 @@ const result = document.createElement("div");
 result.classList.add("result");
 container.appendChild(result);
 
+// Created a container that will display the score
 const score = document.createElement("div");
 score.classList.add("score");
 container.appendChild(score);
 
+// Player's initial score as a <p>
 const playerScore = document.createElement("p");
 playerScore.textContent = "Player: 0";
 score.appendChild(playerScore);
 
+// Computers's initial score as a <p>
 const computerScore = document.createElement("p");
 computerScore.textContent = "Computer: 0";
 score.appendChild(computerScore);
 
+// Actuall value that will be updated after each round
 let playerCount = 0;
 let computerCount = 0;
 
+// Creating a div for the 3 buttons
 const buttons = document.createElement("div");
 buttons.classList.add("buttons");
 container.appendChild(buttons);
 
+// Array of the choices to iterate through
+// Doing this instead of create 3 individual buttons for each choice
 const choices = ["rock", "paper", "scissors"];
