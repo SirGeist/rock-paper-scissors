@@ -72,10 +72,12 @@ let playGame = (playerSelection, computerSelection) => {
   }
 };
 
+// Created a main container to attach everything to it
 const container = document.createElement("div");
 container.classList.add("container");
 document.body.appendChild(container);
 
+// Container that displays the results of both player and computer
 const result = document.createElement("div");
 result.classList.add("result");
 container.appendChild(result);
@@ -89,58 +91,14 @@ playerScore.textContent = "Player: 0";
 score.appendChild(playerScore);
 
 const computerScore = document.createElement("p");
-playerScore.textContext = "Computer: 0";
+computerScore.textContent = "Computer: 0";
 score.appendChild(computerScore);
 
 let playerCount = 0;
 let computerCount = 0;
 
-const rockBtn = document.createElement("button");
-rockBtn.setAttribute("style", "padding: 25px;");
-rockBtn.textContent = "ROCK";
-rockBtn.addEventListener("click", () => {
-  switch (playGame("rock", getComputerChoice())) {
-    case -1:
-  }
-});
+const buttons = document.createElement("div");
+buttons.classList.add("buttons");
+container.appendChild(buttons);
 
-const paperBtn = document.createElement("button");
-paperBtn.setAttribute("style", "padding: 25px;");
-paperBtn.textContent = "PAPER";
-paperBtn.addEventListener("click", () => {
-  playGame("paper", getComputerChoice());
-});
-
-const scissorsBtn = document.createElement("button");
-scissorsBtn.setAttribute("style", "padding: 25px;");
-scissorsBtn.textContent = "SCISSORS";
-scissorsBtn.addEventListener("click", () => {
-  playGame("scissors", getComputerChoice());
-});
-
-container.appendChild(rockBtn);
-container.appendChild(paperBtn);
-container.appendChild(scissorsBtn);
-
-function updateScores() {
-  playerScore.textContent = "Player Score: " + playerCount;
-  computerScore.textContent = "Computer Score: " + computerCount;
-
-  if (playerCount >= 5) {
-    result.textContent = "Congratulations! You win!";
-    disableButtons();
-  } else if (computerCount >= 5) {
-    result.textContent = "Computer wins! Better luck next time!";
-    disableButtons();
-  }
-}
-
-function disableButtons() {
-  rockBtn.disabled = true;
-  paperBtn.disabled = true;
-  scissorsBtn.disabled = true;
-}
-
-function setResult(message) {
-  result.textContent = message;
-}
+const choices = ["rock", "paper", "scissors"];
