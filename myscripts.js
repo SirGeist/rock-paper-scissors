@@ -72,11 +72,26 @@ let playGame = (playerSelection, computerSelection) => {
   }
 };
 
-const container = document.querySelector(".container");
-const result = document.querySelector(".result");
+const container = document.createElement("div");
+container.classList.add("container");
+document.body.appendChild(container);
+
+const result = document.createElement("div");
+result.classList.add("result");
+container.appendChild(result);
+
+const score = document.createElement("div");
+score.classList.add("score");
+container.appendChild(score);
 
 const playerScore = document.createElement("p");
+playerScore.textContent = "Player: 0";
+score.appendChild(playerScore);
+
 const computerScore = document.createElement("p");
+playerScore.textContext = "Computer: 0";
+score.appendChild(computerScore);
+
 let playerCount = 0;
 let computerCount = 0;
 
