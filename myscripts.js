@@ -109,3 +109,40 @@ container.appendChild(buttons);
 // Array of the choices to iterate through
 // Doing this instead of create 3 individual buttons for each choice
 const choices = ["rock", "paper", "scissors"];
+
+// Iterating through each choice within the array to create a button
+choices.forEach((choice) => {
+  const button = document.createElement("button");
+  button.textContent = choice.toUpperCase;
+  button.addEventListener("click", () => {
+    const roundResult = playGame(choice, getComputerChoice());
+    updateScore(roundResult);
+  });
+
+  // After creating a button for each choice, append them all to the container
+  buttons.appendChild(button);
+});
+
+// Function to update our scoreboard
+function updateScore(result) {
+  if (result === 1) {
+    playerCount++;
+  } else if (result === 0) {
+    computerCount++;
+  }
+
+  // Displaying the current count for both players
+  playerScore.textContent = "Player: " + playerCount;
+  computerScore.textContent = "Computer: " + computerCount;
+
+  if (playerCount === 5) {
+    setResult("Player wins the game!");
+  } else if (computerCount === 5) {
+    setResult("Computer Wins the game!");
+  }
+}
+
+// Function to set the result message
+function setResult(message) {
+  result.textContent = message;
+}
