@@ -72,32 +72,63 @@ let playGame = (playerSelection, computerSelection) => {
   }
 };
 
-var playerCount = 0;
-var computerCount = 0;
-var round = 1;
-while (playerCount < 5 && computerCount < 5) {
-  console.log("Round " + round);
-  var computerSelection = getComputerChoice();
+// Removing 5 rounds logic
+// var playerCount = 0;
+// var computerCount = 0;
+// var round = 1;
+// while (playerCount < 5 && computerCount < 5) {
+//   console.log("Round " + round);
+//   var computerSelection = getComputerChoice();
 
-  // Getting user input
-  var playerSelection = prompt(
-    "What is your choice? Rock, Paper, or Scissors?"
-  );
+//   // Getting user input
+//   var playerSelection = prompt(
+//     "What is your choice? Rock, Paper, or Scissors?"
+//   );
 
-  // Calling the function
-  let winner = playGame(playerSelection, getComputerChoice());
+//   // Calling the function
+//   let winner = playGame(playerSelection, getComputerChoice());
 
-  if (winner == 1) {
-    playerCount++;
-  } else if (winner == 0) {
-    computerCount++;
-  }
+//   if (winner == 1) {
+//     playerCount++;
+//   } else if (winner == 0) {
+//     computerCount++;
+//   }
 
-  round++;
+//   round++;
 
-  if (playerCount == 5) {
-    console.log("You are the winner!");
-  } else if (computerCount == 5) {
-    console.log("You lose");
-  }
-}
+//   if (playerCount == 5) {
+//     console.log("You are the winner!");
+//   } else if (computerCount == 5) {
+//     console.log("You lose");
+//   }
+// }
+
+const container = document.querySelector(".container");
+
+const rockBtn = document.createElement("button");
+rockBtn.setAttribute("style", "padding: 25px;");
+rockBtn.textContent = "ROCK";
+rockBtn.addEventListener("click", () => {
+  playGame("rock", getComputerChoice());
+});
+
+const paperBtn = document.createElement("button");
+paperBtn.setAttribute("style", "padding: 25px;");
+paperBtn.textContent = "PAPER";
+paperBtn.addEventListener("click", () => {
+  playGame("paper", getComputerChoice());
+});
+
+const scissorsBtn = document.createElement("button");
+scissorsBtn.setAttribute("style", "padding: 25px;");
+scissorsBtn.textContent = "SCISSORS";
+scissorsBtn.addEventListener("click", () => {
+  playGame("scissors", getComputerChoice());
+});
+
+const result = document.createElement("div");
+result.classList.toggle("result");
+
+container.appendChild(rockBtn);
+container.appendChild(paperBtn);
+container.appendChild(scissorsBtn);
