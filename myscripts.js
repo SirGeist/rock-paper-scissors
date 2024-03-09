@@ -36,13 +36,13 @@ let playGame = (playerSelection, computerSelection) => {
     playerSelection != "paper" &&
     playerSelection != "scissors"
   ) {
-    console.log("Error! Incorrect input!");
+    setResult("Error! Incorrect input!");
     return;
   }
 
   // Display a tie if both selections are the same
   if (playerSelection == computerSelection) {
-    console.log("It's a tie! You both chose " + playerSelection + "!");
+    setResult("It's a tie! You both chose " + playerSelection + "!");
     return -1;
   } else {
     switch (true) {
@@ -50,7 +50,7 @@ let playGame = (playerSelection, computerSelection) => {
       case (playerSelection == "paper" && computerSelection == "rock") ||
         (playerSelection == "scissors" && computerSelection == "paper") ||
         (playerSelection == "rock" && computerSelection == "scissors"):
-        console.log(
+        setResult(
           playerSelection +
             " beats " +
             computerSelection +
@@ -60,7 +60,7 @@ let playGame = (playerSelection, computerSelection) => {
 
       // Otherwise, display that they lost
       default:
-        console.log(
+        setResult(
           "Computer chose " +
             computerSelection +
             ". You chose " +
@@ -106,3 +106,26 @@ scissorsBtn.addEventListener("click", () => {
 container.appendChild(rockBtn);
 container.appendChild(paperBtn);
 container.appendChild(scissorsBtn);
+
+function updateScores() {
+  playerScore.textContent = "Player Score: " + playerCount;
+  computerScore.textContent = "Computer Score: " + computerCount;
+
+  if (playerCount >= 5) {
+    result.textContent = "Congratulations! You win!";
+    disableButtons();
+  } else if (computerCount >= 5) {
+    result.textContent = "Computer wins! Better luck next time!";
+    disableButtons();
+  }
+}
+
+function disableButtons() {
+  rockBtn.disabled = true;
+  paperBtn.disabled = true;
+  scissorsBtn.disabled = true;
+}
+
+function setResult(message) {
+  result.textContent = message;
+}
