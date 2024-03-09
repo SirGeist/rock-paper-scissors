@@ -113,7 +113,7 @@ const choices = ["rock", "paper", "scissors"];
 // Iterating through each choice within the array to create a button
 choices.forEach((choice) => {
   const button = document.createElement("button");
-  button.textContent = choice.toUpperCase;
+  button.textContent = choice.toUpperCase();
   button.addEventListener("click", () => {
     const roundResult = playGame(choice, getComputerChoice());
     updateScore(roundResult);
@@ -137,9 +137,20 @@ function updateScore(result) {
 
   if (playerCount === 5) {
     setResult("Player wins the game!");
+    disableBtn();
   } else if (computerCount === 5) {
     setResult("Computer Wins the game!");
+    disableBtn();
   }
+}
+
+// Once a player wins, we want to disable all of the buttons by looking at the class buttons
+// and disabling all its button descendants
+function disableBtn() {
+  const buttons = document.querySelectorAll(".buttons button");
+  buttons.forEach((button) => {
+    button.disabled = true;
+  });
 }
 
 // Function to set the result message
